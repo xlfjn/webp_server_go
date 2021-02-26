@@ -118,7 +118,7 @@ func convert(c *fiber.Ctx) error {
 	}
 	etag := genEtag(finalFile)
 	c.Set("ETag", etag)
-	c.Set("X-Compression-Rate", getCompressionRate(rawImageAbs, webpAbsPath))
+	//c.Set("X-Compression-Rate", getCompressionRate(rawImageAbs, webpAbsPath))
 	finalFile = chooseLocalSmallerFile(rawImageAbs, webpAbsPath)
 	return c.SendFile(finalFile)
 
