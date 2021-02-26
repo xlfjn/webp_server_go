@@ -167,17 +167,8 @@ func uaOrigin(ua string) bool {
 	if strings.Contains(ua, "iPhone OS 14") || strings.Contains(ua, "CPU OS 14") {
 		// this is iOS 14/iPadOS 14
 		return false
-	} else if strings.Contains(ua, "Firefox") || strings.Contains(ua, "Chrome") {
-		// Chrome or firefox on macOS Windows
-	} else if strings.Contains(ua, "Android") || strings.Contains(ua, "Linux") {
-		// on Android and Linux
-	} else if strings.Contains(ua, "FxiOS") || strings.Contains(ua, "CriOS") {
-		//firefox and Chrome on iOS
-		return true
-	} else {
-		return true
 	}
-	return false
+	return true
 }
 
 func headerOrigin(header string) bool {
