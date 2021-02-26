@@ -57,7 +57,7 @@ func convert(c *fiber.Ctx) error {
 
 	if !allowed {
 		msg := "File extension not allowed! " + imgFilename
-		log.Warn(msg)
+		//log.Warn(msg)
 		if imageExists(rawImageAbs) {
 			c.Set("ETag", genEtag(rawImageAbs))
 			return c.SendFile(rawImageAbs)
