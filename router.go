@@ -26,11 +26,13 @@ func convert(c *fiber.Ctx) error {
 	var imgFilename = path.Base(reqURI) // pure filename, 123.jpg
 	var finalFile string                // We'll only need one c.sendFile()
 	var ua = c.Get("User-Agent")
-	var accept = c.Get("accept")
+	//var accept = c.Get("accept")
+	var webpSupport = c.Get("X-WebP-Support")
 	log.Debugf("Incoming connection from %s@%s with %s", ua, c.IP(), imgFilename)
 
-	needOrigin := goOrigin(accept, ua)
-	if needOrigin {
+	//needOrigin := goOrigin(accept, ua)
+	needConvert := strings.Contains(webpSupport, "1")
+	if !needConvert {
 		log.Debugf("A Safari/IE/whatever user has arrived...%s", ua)
 		c.Set("ETag", genEtag(rawImageAbs))
 		if proxyMode {
